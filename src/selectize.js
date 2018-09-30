@@ -1124,6 +1124,14 @@ $.extend(Selectize.prototype, {
 					dom:  html_children
 				})));
 			} else {
+				// clear selection on all previously selected elements first
+				self.$dropdown.find('.selected').removeClass('selected');
+				// add "selected" class to selected options
+				if (!self.settings.hideSelected) {
+					for (i = 0, n = self.items.length; i < n; i++) {
+						self.getOption(self.items[i]).addClass('selected');
+					}
+				}
 				html.appendChild(groups[optgroup]);
 			}
 		}
